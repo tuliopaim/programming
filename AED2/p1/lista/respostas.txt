@@ -1,0 +1,186 @@
+Aluno: Túlio Paim
+
+1-
+ a) Compara 5 com a raiz, com 1, com 4, com 6, com 3, com 2, com 5, achou.
+ verificar se o nó possui dois filhos, verificar se possui um, achou.
+ o ponteiro que apontava para o 5 agora aponta para seu filho.
+ libera a memoria do nó 5
+
+ b) Compara o 7 com a raiz, achou.
+ verifica se o nó possui dois filhos, achou.
+ descer a arvore recursivamente até achar um nó folha, achou o 8
+ o 8 aponta para para os filhos do 7
+ libera a memoria do 8 e seu pai aponta para NULL
+
+ c)
+ void remove(tree * raiz, int valor){
+  se(*raiz == null) return ;
+  se(*raiz -> valor != valor && key == 0){
+    remove(*raiz->left, valor);
+    remove(*raiz->right, valor);
+  }se senao(key == 1){
+    nó aux = *root;
+    se(aux->left == null e aux->right == null){
+      libera(aux);
+      *raiz = null;
+    }
+    se senao (aux->left != null e aux->right == null){
+      *raiz = *raiz->left
+      aux->left = null;
+      libera(aux);
+      aux = null;
+    }
+    se senao (aux->left == null e aux->right != null){
+      *raiz = *raiz->right
+      aux->right = null;
+      libera(aux);
+      aux = null;
+    }
+    se senao (aux->left != null e aux->right != null){
+      enquanto(aux->left!=NULL)
+        aux = aux->left;
+      se(aux->right != NULL){
+        nó raizAux = aux;
+        aux = aux->right;
+        raizAux->left = *raiz->left;
+        raizAux->right = *raiz->right;
+        libera(*raiz);
+        *raiz = raizAux;
+        aux = NULL;
+        raizAux = null;
+      }
+      senao{
+        free(*raiz);
+        *raiz = aux;
+        aux = NULL;
+      }
+    }
+  }
+ }
+
+2-
+
+3-
+
+4-
+      1
+        \
+         9
+      /     \
+    6         12
+   /   \      /
+ 2       8   11
+  \     /   /
+   4  7    10
+  / \
+3    5
+
+5-
+a)
+  1
+   \
+    2
+     \
+      7
+     /
+    3
+     \
+      4
+       \
+        5
+         \
+          6
+
+b)
+          A
+        /   \
+      B       C
+     / \     /  \
+    D   E   G    H
+       /        / \
+      F        J   K
+              /
+             K
+6-
+  C
+ / \
+A   B
+
+     C
+    /
+   B
+  /
+ A
+
+ C
+  \
+   A
+    \
+     B
+
+C
+ \
+  B
+ /
+A
+
+  C
+ /
+B
+ \
+  A
+
+
+
+8-
+a)
+
+   A
+  / \
+ E    S
+    /   \
+   Q      Y
+  /      /
+ I      U
+  \    /
+   O  T
+  /
+ N
+
+b)
+Q = Q->left
+aux->left = null;
+libera(aux);
+aux = null;
+    A
+  /  \
+ E    S
+    /   \
+  I      Y
+   \    /
+   O   U
+  /   /
+N    T
+
+9-
+(1) manter o parentesco do filho mais a esquerda
+     A
+    /
+   B
+  /
+ D
+
+ (2) o irmão ao lado direito vira filho direito
+    A
+   /
+  B
+ / \
+D   C
+ \
+  E
+   \
+    F
+      \
+       G
+
+       

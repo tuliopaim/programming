@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+body{
+  background: #333;
+}
+
+header{
+  width: 100vw;
+  background: rgb(232, 10, 135);
+  padding: 2em 2em .5em;
+  border-bottom: 10px solid #f4f4f4;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+header h1{
+  font-size: 2.9em;
+  color: #f4f4f4;
+}
+
+#main{
+  background: rgb(245, 247, 246);
+  width: 400px;
+  margin: 0 auto;
+  padding: 2em;
+  border-radius: 5px;
+}
+
+#main h3{
+  color: #333;
+  margin-bottom: .5em;
+}
+
+#input{
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+#content {
+  padding: .7em 2em;
+  border: 1px solid rgb(194, 190, 190);
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px rgba(68, 68, 68, 0.3);
+}
+
+#input #button{
+  color: #222;
+  padding: .69em 1em;
+  margin-left: .5em;
+  border: 1px solid rgb(194, 190, 190);
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px rgba(68, 68, 68, 0.3);
+}
+
+#input #button:hover,
+#input #button:focus{
+  background: rgb(186, 186, 190)
+}
+
+#input #button:active{
+  background: #333;
+  color:#f4f4f4;
+}
+
+.items{
+  margin: 0;
+}
+
+.items ul{
+  list-style: none;
+}
+
+.items li{
+  background: white;
+  margin-bottom: .5em;
+  padding: 12px 1em;
+  border: 1px solid rgb(194, 190, 190);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 2px 2px 5px rgba(3, 3, 3, 0.2); 
+  overflow: hidden;
+}
+
+.items .text{
+  float: left;
+  width: 270px;
+  color: #222;
+}
+
+.items .delete{
+  cursor: pointer;
+  float: right;
+  width: 20px;
+  height: 20px;
+  font-size: .8em;
+  color: #f4f4f4;
+  background: #222;
+  border: 1px solid rgb(194, 190, 190);
+  border-radius:30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.items .delete:hover,
+.items .delete:focus{
+  background: #3f0000;
+  color: white;
+}
+
+.items .delete:active{
+  background: rgb(202, 4, 4);
+}
