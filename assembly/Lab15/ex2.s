@@ -74,6 +74,7 @@ main:
 	cmp $3, %r14
 	jge	fim_for_i
 
+	
 	for_j:
 	cmp $3, %r15
 	jge fim_for_j
@@ -84,27 +85,27 @@ main:
 
 	/* calcula indice i*/
 
-	movq %r14, %r11		/* addr i 	*/
-	imulq $16, %r11
-	addq %r12, %r11
+	movq %r14, %r11		/* temp = i			*/
+	imulq $16, %r11		/* temp *= sizeof() */
+	addq %r12, %r11		/*	i += &p[i]		*/
 
-	movq %r11, %r8		/* p[i]	*/
+	movq %r11, %r8		/* r8 = &p[i]		*/
 
-	addq $8, %r11
+	addq $8, %r11		/* temp = &p[i].nascimento */
 
-	movq %r11, %rdi	/* passa pro primeiro parametro */
+	movq %r11, %rdi		/* passa pro primeiro parametro */
 
 	/* calcula indice j*/
 
-	movq %r15, %r13		/* addr j 	*/
-	imulq $16, %r13
-	addq %r12, %r13
+	movq %r15, %r13		/* temp = j			*/
+	imulq $16, %r13 	/* temp *= sizeof() */
+	addq %r12, %r13  	/*	j += &p[j]		*/
 
-	movq %r13, %r9		/* p[j]	*/
+	movq %r13, %r9		/* r9 = &p[j]	*/
 
-	addq $8, %r13
+	addq $8, %r13 		/* temp = &p[j].nascimento */
 
-	movq %r13, %rsi	/* passa pro segundo parametro */
+	movq %r13, %rsi	 	/* passa pro segundo parametro */
 
 	/*if (compare(&p[i].nascimento, &p[j].nascimento)) */
 
@@ -125,8 +126,8 @@ main:
 
 
 	movq $String, %rdi
-	movq %r8, %rsi
-	movq %r9, %rdx
+	movq (%r8), %rsi
+	movq (%r9), %rdx
 	movl $0, %eax
 	call printf
 
@@ -134,6 +135,7 @@ main:
 
 	addq $1, %r15	/* j++ 	*/
 	jmp for_j
+
 	fim_for_j:
 	
 	addq $1, %r14	/* i++	*/
@@ -169,7 +171,7 @@ compare:
 	/* r13 = d2.dia*/
 	movb 5(%rsi), %r13b
 
-	cmp %r12b, %r13b
+	cmpb %r12b, %r13b
 	jne else
 
 	/*d1->mes == d2->mes*/
@@ -186,10 +188,10 @@ compare:
 	/*d1->ano == d2->ano*/
 
 	/* r12 = d1.ano*/
-	movl 4(%rdi), %r12d
+	movl (%rdi), %r12d
 
 	/* r13 = d2.ano*/
-	movl 4(%rsi), %r13d
+	movl (%rsi), %r13d
 
 	cmpl %r12d, %r13d
 	jne else
