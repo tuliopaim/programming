@@ -68,12 +68,12 @@ main:
 
 	/*for's*/	
 	movq $0, %r14		/* i 	*/
-	movq $0, %r15		/* j 	*/	
 
 	for_i:
 	cmp $3, %r14
 	jge	fim_for_i
 
+	movq $0, %r15		/* j 	*/	
 	
 	for_j:
 	cmp $3, %r15

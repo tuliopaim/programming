@@ -1,8 +1,6 @@
 .data
 	String: .string "val1: %d\nval2: %ld\n"
 
-	.align 8
-
 .global swap, main
 swap:
 	pushq %rbp
@@ -28,9 +26,14 @@ main:
 	movq %r13, -16(%rbp)
 
 	/*struct*/
+
+	/*
+	char val1 -32
+	long val2 -24
+	*/
 	
-	movq $12, -24(%rbp)	/* long */
-	movb $127, -32(%rbp)	/* byte */
+	movb $12, -32(%rbp)		/* byte */
+	movq $1245, -24(%rbp)	/* long */
 
 	leaq -32(%rbp), %rdi
 	call swap	
